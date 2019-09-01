@@ -242,3 +242,56 @@ screenshot.clip.height | number | - | 指定页剪切区域的高度.
 * [Koajs](https://github.com/koajs/koa) 很好的框架
 * [Puppeteer](https://github.com/GoogleChrome/puppeteer) 谷歌官方 Chrome
   node库
+  
+  
+ ### 1. 安装 NODEJS 服务
+> 建议使用已经编译好的包，不要使用源码；
+```shell
+#更新系统依赖库
+yum install gcc gcc-c++
+#下载nodejs可运行包
+wget https://npm.taobao.org/mirrors/node/v10.14.1/node-v10.14.1-linux-x64.tar.gz
+#解压并重命名
+tar -xvf  node-v10.14.1-linux-x64.tar.gz
+mv node-v10.14.1-linux-x64 node
+#配置环境变量
+vim /etc/profile
+
+#set for nodejs  
+export NODE_HOME=/usr/local/node  
+export PATH=$NODE_HOME/bin:$PATH
+#重载环境变量配置
+source /etc/profile
+node -v
+npm -v
+```
+
+### 2.安装 CNPM 替代 NPM
+> 不安装 cnpm 替代 npm，会遇到安装 puppeteer 失败的问题：
+> 问题详见: https://github.com/GoogleChrome/puppeteer/issues/2173
+#设置
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+#升级
+cnpm install cnpm -g
+
+### 3.下载源码
+```shell
+git clone git@github.com:aoju/lancia.git
+或
+wget https://github.com/aoju/lancia/archive/master.zip
+```
+### 4.部署服务
+```shell
+cd lancia
+
+# 安装以来
+cnpm install 
+# 运行服务
+cnpm start
+```
+
+> 注意： 配置文件有配置日志文件输入目录:
+bin/config.json 
+修改 logs 目录；
+
